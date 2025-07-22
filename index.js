@@ -1,0 +1,12 @@
+import{a as d,S as f,i as l}from"./assets/vendor-Dy2ZTtfi.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const o of r.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&i(o)}).observe(document,{childList:!0,subtree:!0});function a(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(e){if(e.ep)return;e.ep=!0;const r=a(e);fetch(e.href,r)}})();function g(t){const s=new URLSearchParams({key:"51438211-e30b649eb0e533720cd6e7900",q:t,image_type:"photo",orientation:"horizontal",safesearch:!0});return d.get(`https://pixabay.com/api/?${s}`).then(a=>{if(a.data.hits.length===0)throw new Error("Sorry, there are no images matching your search query. Please try again!");return a.data.hits})}const n=document.querySelector(".gallery"),y=new f(".gallery-link",{});function h(t){let s=t.map(({webformatURL:a,largeImageURL:i,tags:e,likes:r,views:o,comments:p,downloads:u})=>`<li class="gallery-li">
+        <a class="gallery-link" href="${i}">
+            <img class="gallery-img" src="${a}" alt="${e}"/>
+        </a>
+        <div class="img-div">
+            <p class="img-p">Likes<span class="img-span">${r}</span></p>
+            <p class="img-p">Views<span class="img-span">${o}</span></p>
+            <p class="img-p">Comments<span class="img-span">${p}</span></p>
+            <p class="img-p">Downloads<span class="img-span">${u}</span></p>
+            </div>
+     </li>`).join("");n.insertAdjacentHTML("beforeend",s),y.refresh()}function L(){n.innerHTML=""}function S(){if(!n.querySelector(".loader")){const t=document.createElement("span");t.classList.add("loader"),n.append(t)}}function c(){const t=document.querySelector(".loader");t&&t.remove()}const m=document.querySelector(".form"),b=t=>{t.preventDefault(),L();let s=m.elements["search-text"].value.trim();s?(S(),g(s).then(a=>{c(),h(a)}).catch(a=>{c(),l.error({title:"Error",message:a.message})})):l.error({title:"Error",message:"Input must not be empty"})};m.addEventListener("submit",b);
+//# sourceMappingURL=index.js.map
